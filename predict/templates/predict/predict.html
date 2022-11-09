@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Ventana de prediciones</h1>
+    
+    <form method='POST' action='' enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ upload }}
+        <button>Enviar</button>
+        
+        {% if graph %}
+        <h1>Graficas 1</h1>
+            <div style="text-align: center !important;">
+                <img src="data:image1/png;base64, {{ graph | safe}}" height="800" width="auto">   
+            </div>
+        {% endif%}
+
+        {% if graph2 %}
+        <h1>Graficas 2</h1>
+            <div style="text-align: center !important;">
+                <img src="data:image2/png;base64, {{ graph2 | safe}}" height="800" width="auto">   
+            </div>
+        {% endif%}
+    </form>
+
+    
+    
+
+</body>
+</html>
